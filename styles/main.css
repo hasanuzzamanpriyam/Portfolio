@@ -593,6 +593,111 @@ button:focus-visible {
     line-height: 1.7;
 }
 
+.client-project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1px;
+    background: var(--line-strong);
+    border: 1px solid var(--line-strong);
+}
+
+.client-project-card {
+    position: relative;
+    min-height: 22rem;
+    padding: 1.5rem;
+    overflow: hidden;
+    background: rgba(255, 253, 248, 0.78);
+    transition: background 220ms var(--ease), transform 220ms var(--ease);
+}
+
+.client-project-card::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 3.5rem;
+    height: 3px;
+    background: var(--accent-color, var(--vermilion));
+    content: "";
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 220ms var(--ease);
+}
+
+.client-project-card:hover {
+    background: var(--white);
+    transform: translateY(-4px);
+}
+
+.client-project-card:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.client-project-card .card-index {
+    color: var(--accent-color, var(--teal));
+}
+
+.client-project-card h3 {
+    margin: 1.5rem 0 0.5rem;
+    font-family: var(--serif);
+    font-size: 1.45rem;
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+}
+
+.client-project-card .project-stack {
+    display: inline-block;
+    margin-bottom: 1rem;
+    padding: 0.3rem 0.55rem;
+    background: var(--mist);
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    line-height: 1.3;
+    border-radius: var(--radius);
+}
+
+.client-project-card p {
+    margin: 0 0 1rem;
+    color: var(--graphite);
+    font-size: 0.85rem;
+    line-height: 1.65;
+}
+
+.client-project-card ul {
+    display: grid;
+    gap: 0.45rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.client-project-card li {
+    position: relative;
+    padding-left: 1.1rem;
+    color: var(--graphite);
+    font-size: 0.82rem;
+    line-height: 1.6;
+}
+
+.client-project-card li::before {
+    position: absolute;
+    top: 0.65em;
+    left: 0;
+    width: 0.35rem;
+    height: 1px;
+    background: var(--accent-color, var(--vermilion));
+    content: "";
+}
+
+.client-project-card .card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1.5rem;
+}
+
 .tech-groups {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1035,11 +1140,13 @@ button:focus-visible {
     }
 
     .capability-grid,
-    .tech-groups {
+    .tech-groups,
+    .client-project-grid {
         grid-template-columns: 1fr;
     }
 
-    .capability-card {
+    .capability-card,
+    .client-project-card {
         min-height: auto;
         padding: 1.25rem;
     }
